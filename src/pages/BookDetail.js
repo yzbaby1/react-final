@@ -1,34 +1,38 @@
-import { useContext } from 'react';
-import { CartContext } from '../CartContext';
+// pages/BookDetail.js
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { CartContext } from '../CartContext';
+ // 根據你的實際路徑調整
 
-
-const BookDetail = ({ books }) => {
-  const { cart, setCart } = useContext(CartContext);
+const BookDetail = () => {
   const { id } = useParams();
-  const book = books.find(b => b.id === parseInt(id));
+  const [book, setBook] = useState(null);
+  const { addToCart } = useContext(CartContext); // 加入購物車 function
 
-  const handleAddToCart = () => {
-    const exist = cart.find(item => item.id === book.id);
-    if (exist) {
-      setCart(prev =>
-        prev.map(item =>
-          item.id === book.id ? { ...item, qty: item.qty + 1 } : item
-        )
-      );
-    } else {
-      setCart(prev => [...prev, { ...book, qty: 1 }]);
-    }
-    alert('已加入購物車！');
-  };
+  useEffect(() => {
+    fetch(`http://localhost/backend_php/api/book.php?id=${id}`)
+      .then(res => res.json())
+      .then(data => setBook(data))
+      .catch(err => console.error('載入書籍資料失敗', err));
+  }, [id]);
+
+  if (!book) {
+    return <div>載入中...</div>;
+  }
 
   return (
     <div style={{ padding: '20px' }}>
       <h2>{book.title}</h2>
+      <img src={book.image} alt={book.title} style={{ width: '300px' }} />
       <p>作者：{book.author}</p>
+      <p>分類：{book.category}</p>
       <p>價格：${book.price}</p>
-      <button onClick={handleAddToCart}>加入購物車</button>
+      <p>描述：{book.description}</p>
+      <button onClick={() => addToCart(book)} style={{ marginTop: '20px' }}>
+        加入購物車
+      </button>
     </div>
   );
 };
+
 export default BookDetail;

@@ -1,0 +1,64 @@
+/* src/styles/Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A47149; /* 木頭色 */
+    color: #fff;
+    padding: 12px 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .nav-links a,
+  .nav-user a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-links span {
+    color: #f5e4d2; /* 奶油淡線 */
+    margin: 0 5px;
+  }
+  
+  .nav-links a:hover,
+  .nav-user a:hover {
+    color: #fcecc9;
+  }
+  
+  .nav-user {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-user span {
+    margin-right: 12px;
+  }
+  
+  .logout-btn {
+    background-color: transparent;
+    border: 1px solid #fcecc9;
+    color: #fcecc9;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .logout-btn:hover {
+    background-color: #fcecc9;
+    color: #A47149;
+  }
+
+  .nav-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  

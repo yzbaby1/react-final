@@ -14,47 +14,52 @@ import Orders from './pages/Orders';
 import './AppStyles.css';
 import { books as initialBooks } from './data';
 
+import { CartProvider } from './CartContext';
+
 function App() {
   const [books, setBooks] = useState(initialBooks);
-  const [cart, setCart] = useState([]);
-  const [user, setUser] = useState(null);
+
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
   return (
-    <Router>
-      <Navbar user={user} setUser={setUser} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/books" element={<BookList books={books} setBooks={setBooks} />} />
-        <Route path="/books/:id" element={<BookDetail books={books} setCart={setCart} />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
-
-        {/* 🔒 Protected Routes */}
-        <Route
-          path="/add"
-          element={
-            <ProtectedRoute user={user}>
-              <AddBook setBooks={setBooks} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute user={user}>
-              <Cart cart={cart} setCart={setCart} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/orders"
-          element={
-            <ProtectedRoute user={user}>
-              <Orders />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Navbar user={user} setUser={setUser} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/books" element={<BookList books={books} setBooks={setBooks} />} />
+          <Route path="/books/:id" element={<BookDetail />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route
+            path="/add"
+            element={
+              <ProtectedRoute user={user}>
+                <AddBook />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute user={user}>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute user={user}>
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

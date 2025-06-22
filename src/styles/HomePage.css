@@ -1,0 +1,162 @@
+:root {
+    --primary: #996633;
+    --secondary: #fdf6ee;
+    --text-main: #3c2f2f;
+    --text-subtle: #7a6c5d;
+    --card-bg: #fffdf9;
+    --border-color: #e8e2da;
+  }
+  
+  body {
+    background-color: var(--secondary);
+    font-family: 'Noto Serif TC', serif;
+  }
+  
+  /* Hero */
+  .hero-carousel {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--border-color);
+  }
+  
+  .hero-carousel img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-main);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .hero-overlay h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .hero-button:hover {
+    background-color: #7a4f1f;
+  }
+  
+  /* 公告 */
+  .announcement-bar {
+    background-color: #fff4d4;
+    color: #805c1d;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f7e0b2;
+  }
+  
+  /* 區塊標題 */
+  .section-title {
+    font-size: 1.6rem;
+    margin: 2rem auto 1rem;
+    color: var(--text-main);
+    border-left: 6px solid var(--primary);
+    padding-left: 10px;
+    width: fit-content;
+  }
+  
+  /* 書卡區塊 */
+  .book-card {
+    width: 210px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+  }
+  
+  .book-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .book-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .book-card h4 {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin: 8px 0 4px;
+  }
+  
+  .book-card p {
+    color: var(--text-subtle);
+    font-size: 0.9rem;
+    margin: 2px 0;
+  }
+  
+  .book-card-price {
+    font-weight: bold;
+    color: #5b4a3f;
+    margin-top: 6px;
+  }
+  
+  /* 關於區 */
+  .about-block {
+    background-color: #faf5ef;
+    padding: 2rem;
+    text-align: center;
+    max-width: 720px;
+    margin: 3rem auto 2rem;
+    border-radius: 10px;
+    color: var(--text-main);
+    line-height: 1.7;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #f2ede8;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-subtle);
+  }
+
+  .home-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: #fffaf5;
+  }
+  
+  .home-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .home-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  
